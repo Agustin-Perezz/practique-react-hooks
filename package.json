@@ -1,0 +1,72 @@
+{
+  "name": "front-testing",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint:fix": "eslint --fix",
+    "prettier:write": "prettier --write",
+    "cypress": "npx cypress run",
+    "cypress:open": "cypress open --e2e",
+    "posttest": "npx nyc report --reporter lcov --reporter text --report-dir coverage",
+    "preview": "vite preview",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "vite-plugin-eslint": "^1.8.1"
+  },
+  "devDependencies": {
+    "@cypress/code-coverage": "^3.13.2",
+    "@types/node": "^20.6.3",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "@vitejs/plugin-react": "^4.0.3",
+    "cypress": "^13.3.0",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.50.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.0",
+    "istanbul-lib-coverage": "^3.2.2",
+    "istanbul-lib-instrument": "^6.0.3",
+    "lint-staged": "^14.0.1",
+    "nyc": "^17.1.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vite-plugin-istanbul": "^6.0.2"
+  },
+  "lint-staged": {
+    "src/**/*.tsx": [
+      "npm run lint:fix",
+      "npm run prettier:write"
+    ]
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.tsx"
+    ],
+    "exclude": [
+      "**/*.cy.ts"
+    ],
+    "all": true,
+    "check-coverage": true,
+    "branches": 80,
+    "functions": 80,
+    "lines": 80,
+    "statements": 80
+  }
+}
