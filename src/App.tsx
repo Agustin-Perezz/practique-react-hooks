@@ -1,9 +1,11 @@
+import { UseEffectExample } from './components/use-effect/UseEffectExample';
 import { UseStateExample } from './components/use-state/UseStateExample';
 
 function App() {
   return (
-    <div className="flex justify-center items-center w-screen h-screen m-0 p-0">
+    <div className="flex flex-col justify-center items-center w-screen h-screen m-0 p-0">
       <UseStateExample />
+      <UseEffectExample />
     </div>
   );
 }
